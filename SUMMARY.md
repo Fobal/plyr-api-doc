@@ -2,7 +2,8 @@
 
 ## API DOCUMENTATION
 
--   [Users](README.md)
+-   [Introduction](api-documentation/introduction/README.md)
+-   [Users](api-documentation/users/README.md)
     -   [Authentication](api-documentation/users/authentication/README.md)
         -   [PLYR\[ID\]](api-documentation/users/authentication/plyr-id/README.md)
             -   [Login](api-documentation/users/authentication/plyr-id/login.md)
