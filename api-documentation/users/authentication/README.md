@@ -15,7 +15,7 @@ layout:
 # Authentication
 
 {% hint style="info" %}
-For detailed information about required headers and their format, please see the \[Headers Overview]\(/users/api-documentation/introduction/README.md).
+For detailed information about required headers and their format, please see the \[Headers Overview]\(/api-documentation/introduction/README.md).
 {% endhint %}
 
 ## Authentication Methods
