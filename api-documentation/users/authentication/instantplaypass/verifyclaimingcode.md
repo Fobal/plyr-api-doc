@@ -14,7 +14,9 @@ Verify the validity of an Instant PlayPass claiming code.
 {% tabs %}
 {% tab title="Request Parameters" %}
 ```typescript
-claimingCode: string; // The claiming code to verify
+{
+    claimingCode: string; // The claiming code to verify
+}
 ```
 {% endtab %}
 
