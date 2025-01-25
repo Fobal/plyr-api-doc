@@ -24,10 +24,7 @@ description: Check if a player has joined a game room
 
 ```typescript
 {
-    success: true,
-    data: {
-        isJoined: boolean; // true if player has joined the room, false otherwise
-    }
+    isJoined: boolean; // true if player has joined the room, false otherwise
 }
 ```
 
@@ -37,7 +34,6 @@ description: Check if a player has joined a game room
 
 ```typescript
 {
-    success: false,
     error: string;
     data: null;
 }

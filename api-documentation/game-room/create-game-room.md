@@ -14,6 +14,7 @@ description: Create a new game room
 ```typescript
 {
     expiresIn?: number; // Room expiration time in seconds (default: 86400 - 24 hours)
+    sync?: boolean; // When true, returns direct response. When false/undefined, returns a task ID for polling status
 }
 ```
 
@@ -21,26 +22,22 @@ description: Create a new game room
 
 {% tab title="Success Response (200)" %}
 
+When sync=false (default):
+
 ```typescript
 {
-    success: true,
-    data: {
-        task: {
-            id: string; // Task ID for checking status
-        }
+    task: {
+        id: string; // Task ID for checking status
     }
 }
 ```
 
-After task completion:
+When sync=true:
 
 ```typescript
 {
-    taskData: {
-        result: {
-            roomId: string; // The created room ID
-        }
-    }
+    roomId: string; // The created room ID
+    roomAddress: string; // The room's blockchain address
 }
 ```
 
@@ -50,9 +47,7 @@ After task completion:
 
 ```typescript
 {
-    success: false,
     error: string;
-    data: null;
 }
 ```
 
@@ -61,9 +56,11 @@ After task completion:
 ## Example Usage
 
 ```javascript
+// Sync=true usage
 const timestamp = Date.now().toString();
 const body = {
-    expiresIn: 86400 // 24 hours
+    expiresIn: 3600, // Room will expire in 1 hour
+    sync: true // or omit for task-based response
 };
 
 const hmac = generateHmacSignature(timestamp, body, secretKey);
@@ -75,8 +72,4 @@ const response = await axios.post(apiEndpoint + '/game/create', body, {
         timestamp: timestamp
     }
 });
-
-// Check task status to get roomId
-const taskId = response.data.task.id;
-// Poll task status until not PENDING
 ```

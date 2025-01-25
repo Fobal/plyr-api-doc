@@ -17,6 +17,7 @@ description: Distribute tokens, remove players, and end a game room in a single 
     plyrIds: string[]; // Array of player IDs to receive tokens and leave
     tokens: string[]; // Array of token names/symbols
     amounts: number[]; // Array of amounts to distribute (corresponding to tokens array)
+    sync?: boolean; // When true, returns direct response. When false/undefined, returns a task ID for polling status
 }
 ```
 
@@ -24,25 +25,27 @@ description: Distribute tokens, remove players, and end a game room in a single 
 
 {% tab title="Success Response (200)" %}
 
+When sync=false (default):
+
 ```typescript
 {
-    success: true,
-    data: {
-        task: {
-            id: string; // Task ID for checking status
-        }
+    task: {
+        id: string; // Task ID for checking status
     }
 }
 ```
 
-After task completion:
+When sync=true:
 
 ```typescript
 {
-    taskData: {
-        status: 'SUCCESS';
-        // Additional operation details
-    }
+    roomId: string; // The room that was processed
+    plyrIds: string[]; // Array of player IDs that received tokens and left
+    distributions: {
+        plyrId: string;
+        token: string;
+        amount: number;
+    }[];
 }
 ```
 
@@ -52,7 +55,6 @@ After task completion:
 
 ```typescript
 {
-    success: false,
     error: string;
     data: null;
 }
@@ -60,15 +62,21 @@ After task completion:
 
 {% endtab %} {% endtabs %}
 
+{% hint style="info" %} The arrays `plyrIds`, `tokens`, and `amounts` must have corresponding lengths. The operation is atomic - if any step (earn, leave, or end) fails, the entire operation is rolled back. {% endhint %}
+
+{% hint style="warning" %} This operation will end the game room, making it unavailable for further operations. Use this when you want to finalize all game room activities. {% endhint %}
+
 ## Example Usage
 
 ```javascript
+// Sync=true usage
 const timestamp = Date.now().toString();
 const body = {
-    roomId: 'room123',
-    plyrIds: ['player1', 'player2'], // Multiple players can earn and leave
-    tokens: ['TOKEN1', 'TOKEN2'], // Different tokens can be distributed
-    amounts: [100, 200] // Corresponding amounts for each token
+    roomId: '123',
+    plyrIds: ['player1', 'player1', 'player2'], // First player receiving 2 tokens, second player receiving 1
+    tokens: ['TOKEN1', 'TOKEN2', 'TOKEN1'], // Token types to distribute
+    amounts: [100, 50, 75], // Corresponding amounts
+    sync: true // or omit for task-based response
 };
 
 const hmac = generateHmacSignature(timestamp, body, secretKey);
@@ -80,10 +88,4 @@ const response = await axios.post(apiEndpoint + '/game/earnLeaveEnd', body, {
         timestamp: timestamp
     }
 });
-
-// Check task status
-const taskId = response.data.task.id;
-// Poll task status until not PENDING
 ```
-
-{% hint style="info" %} The arrays `plyrIds`, `tokens`, and `amounts` must have corresponding lengths. The operation is atomic - if any step (earn, leave, or end) fails, the entire operation is rolled back. {% endhint %}

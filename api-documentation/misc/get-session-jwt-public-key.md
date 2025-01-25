@@ -21,10 +21,7 @@ description: Get session JWT public key endpoint
 
 ```typescript
 {
-  success: true,
-  data: {
-    publicKey: string  // Base64 encoded public key
-  }
+    publicKey: string; // Base64 encoded public key
 }
 ```
 
@@ -34,10 +31,24 @@ description: Get session JWT public key endpoint
 
 ```typescript
 {
-  success: false,
   error: string,
   data: null
 }
 ```
 
 {% endtab %} {% endtabs %}
+
+## Example Usage
+
+```typescript
+// Fetch the public key
+const response = await axios.get(apiEndpoint + '/jwt/publicKey');
+const publicKey = response.data.publicKey;
+
+// Verify a JWT locally
+const decodedToken = jwt.verify(token, Buffer.from(publicKey, 'base64').toString('utf-8'), { algorithms: ['ES256'] });
+```
+
+{% hint style="info" %} The public key can be used to verify session JWTs locally without making API calls. {% endhint %}
+
+{% hint style="warning" %} Cache the public key and reuse it for multiple verifications. Only fetch a new key if verification fails. {% endhint %}

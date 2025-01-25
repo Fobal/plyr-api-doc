@@ -23,23 +23,22 @@ description: Get user's ZooGenes NFTs
 
 ```typescript
 {
-  success: true,
-  data: Array<{
-    owner: string,
-    uri: string,
-    collection: string,
-    quantity: string,
-    tokenId: string,
-    name: string,
-    image: string,
-    description: string,
-    attributes: Array<{
-      trait_type: string,
-      display_type?: string,
-      value: string | number,
-      max_value?: number
-    }>
-  }>
+    data: Array<{
+        owner: string;
+        uri: string;
+        collection: string;
+        quantity: string;
+        tokenId: string;
+        name: string;
+        image: string;
+        description: string;
+        attributes: Array<{
+            trait_type: string;
+            display_type?: string;
+            value: string | number;
+            max_value?: number;
+        }>;
+    }>;
 }
 ```
 
@@ -49,9 +48,39 @@ description: Get user's ZooGenes NFTs
 
 ```typescript
 {
-  success: false,
-  data: null
+    data: null;
 }
 ```
 
 {% endtab %} {% endtabs %}
+
+## Example Usage
+
+```javascript
+const timestamp = Date.now().toString();
+const plyrId = 'player123';
+
+// Since this is a GET request with no body, pass null as the body for HMAC
+const hmac = generateHmacSignature(timestamp, null, secretKey);
+
+// Make the API request
+const response = await axios.get(apiEndpoint + `/nft/avalanche/zoogenes/${plyrId}`, {
+    headers: {
+        apikey: apiKey,
+        signature: hmac,
+        timestamp: timestamp
+    }
+});
+
+// Response will contain array of ZooGene NFTs with their metadata
+const zoogenes = response.data.data;
+// Access individual ZooGene properties
+zoogenes.forEach((nft) => {
+    console.log(`ZooGene #${nft.tokenId}:`);
+    console.log(`- Name: ${nft.name}`);
+    console.log(`- Image: ${nft.image}`);
+    console.log('- Attributes:', nft.attributes);
+});
+```
+
+{% hint style="info" %} ZooGenes are special NFTs with unique attributes that can be used in various PLYR games and experiences. {% endhint %}

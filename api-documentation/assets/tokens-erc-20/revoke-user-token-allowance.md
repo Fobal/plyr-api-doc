@@ -26,10 +26,7 @@ description: Revoke user token allowance for a game
 
 ```typescript
 {
-    success: true,
-    data: {
-        // Revocation details
-    }
+    // Revocation details
 }
 ```
 
@@ -39,7 +36,6 @@ description: Revoke user token allowance for a game
 
 ```typescript
 {
-    success: false,
     error: string;
     data: null;
 }
@@ -50,16 +46,19 @@ description: Revoke user token allowance for a game
 ## Example Usage
 
 ```javascript
+// Setup request parameters
 const timestamp = Date.now().toString();
 const body = {
-    plyrId: 'player123',
-    gameId: 'game123',
-    token: 'TOKEN',
-    otp: '123456'
+    plyrId: 'player_abc123', // The player's ID
+    gameId: 'game_xyz789', // The game's ID
+    token: 'USDC', // Token to revoke
+    otp: '123456' // One-time password
 };
 
+// Generate HMAC signature
 const hmac = generateHmacSignature(timestamp, body, secretKey);
 
+// Make the API request
 const response = await axios.post(apiEndpoint + '/game/revoke', body, {
     headers: {
         apikey: apiKey,

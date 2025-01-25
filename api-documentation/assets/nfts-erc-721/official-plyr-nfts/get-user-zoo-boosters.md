@@ -1,2 +1,5 @@
-# Get User Zoo Boosters
+---
+description: Get user's Zoo Booster NFTs
+---
 
+# Get User Zoo Boosters

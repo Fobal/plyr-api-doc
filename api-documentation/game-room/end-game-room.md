@@ -14,6 +14,7 @@ description: End a game room session
 ```typescript
 {
     roomId: string; // The ID of the room to end
+    sync?: boolean; // When true, returns direct response. When false/undefined, returns a task ID for polling status
 }
 ```
 
@@ -21,25 +22,21 @@ description: End a game room session
 
 {% tab title="Success Response (200)" %}
 
+When sync=false (default):
+
 ```typescript
 {
-    success: true,
-    data: {
-        task: {
-            id: string; // Task ID for checking status
-        }
+    task: {
+        id: string; // Task ID for checking status
     }
 }
 ```
 
-After task completion:
+When sync=true:
 
 ```typescript
 {
-    taskData: {
-        status: 'SUCCESS';
-        // Additional task data
-    }
+    roomId: string; // The ID of the ended room
 }
 ```
 
@@ -49,7 +46,6 @@ After task completion:
 
 ```typescript
 {
-    success: false,
     error: string;
     data: null;
 }
@@ -60,9 +56,11 @@ After task completion:
 ## Example Usage
 
 ```javascript
+// Sync=true usage
 const timestamp = Date.now().toString();
 const body = {
-    roomId: 'room123'
+    roomId: '123',
+    sync: true // or omit for task-based response
 };
 
 const hmac = generateHmacSignature(timestamp, body, secretKey);
@@ -74,8 +72,4 @@ const response = await axios.post(apiEndpoint + '/game/end', body, {
         timestamp: timestamp
     }
 });
-
-// Check task status
-const taskId = response.data.task.id;
-// Poll task status until not PENDING
 ```

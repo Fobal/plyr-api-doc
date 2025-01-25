@@ -25,11 +25,8 @@ description: Get user token allowance for a game
 
 ```typescript
 {
-    success: true,
-    data: {
-        allowance: string; // Current token allowance amount
-        expiresAt: string; // ISO timestamp when the allowance expires
-    }
+    allowance: string; // Current token allowance amount
+    expiresAt: string; // ISO timestamp when the allowance expires
 }
 ```
 
@@ -39,7 +36,6 @@ description: Get user token allowance for a game
 
 ```typescript
 {
-    success: false,
     error: string;
     data: null;
 }

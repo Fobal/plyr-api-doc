@@ -23,13 +23,10 @@ description: Check session JWT validity endpoint
 
 ```typescript
 {
-  success: true,
-  data: {
-    isValid: boolean,
+  isValid: boolean,
     plyrId?: string,
     walletAddress?: string
-  }
-}
+ }
 ```
 
 {% endtab %}
@@ -38,10 +35,30 @@ description: Check session JWT validity endpoint
 
 ```typescript
 {
-  success: false,
   error: string,
   data: null
 }
 ```
 
 {% endtab %} {% endtabs %}
+
+{% hint style="info" %} For local JWT verification without making an API call, see the "Verify JWT Locally" documentation. {% endhint %} {% hint style="warning" %} Session JWTs have an expiration time. Always verify JWTs before using them in critical operations. {% endhint %}
+
+## Example Usage
+
+```javascript
+const timestamp = Date.now().toString();
+const body = {
+    sessionJwt: 'eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9...' // JWT to verify
+};
+
+const hmac = generateHmacSignature(timestamp, body, secretKey);
+
+const response = await axios.post(apiEndpoint + '/user/session/verify', body, {
+    headers: {
+        apikey: apiKey,
+        signature: hmac,
+        timestamp: timestamp
+    }
+});
+```

@@ -28,10 +28,7 @@ description: Approve user token spending for a game
 
 ```typescript
 {
-    success: true,
-    data: {
-        // Approval details
-    }
+    // Approval details
 }
 ```
 
@@ -41,7 +38,6 @@ description: Approve user token spending for a game
 
 ```typescript
 {
-    success: false,
     error: string;
     data: null;
 }
@@ -52,18 +48,21 @@ description: Approve user token spending for a game
 ## Example Usage
 
 ```javascript
+// Setup request parameters
 const timestamp = Date.now().toString();
 const body = {
-    plyrId: 'player123',
-    gameId: 'game123',
-    otp: '123456',
-    token: 'TOKEN',
-    amount: 1000,
-    expiresIn: 3600 // 1 hour
+    plyrId: 'player_abc123', // The player's ID
+    gameId: 'game_xyz789', // The game's ID
+    otp: '123456', // One-time password
+    token: 'USDC', // Token to approve
+    amount: 1000, // Amount to approve (in token's smallest unit)
+    expiresIn: 3600 // Approval expires in 1 hour
 };
 
+// Generate HMAC signature
 const hmac = generateHmacSignature(timestamp, body, secretKey);
 
+// Make the API request
 const response = await axios.post(apiEndpoint + '/game/approve', body, {
     headers: {
         apikey: apiKey,

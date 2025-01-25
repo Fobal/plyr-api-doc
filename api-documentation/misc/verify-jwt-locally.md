@@ -34,24 +34,11 @@ try {
 }
 ```
 
-### Success Response
-
-If verification succeeds, you'll get the decoded JWT payload:
-
-```typescript
-{
-  plyrId: string,
-  walletAddress: string,
-  exp: number,
-  // ... other claims from the JWT
-}
-```
-
 ### Error Cases
 
 Verification will throw an error if:
 
 -   The JWT format is invalid
 -   The signature is invalid
--   The token has expired
+-   The token has expired (due to logout for example)
 -   The algorithm doesn't match (must be ES256)

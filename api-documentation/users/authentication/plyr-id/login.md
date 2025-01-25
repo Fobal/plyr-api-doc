@@ -26,16 +26,13 @@ description: User login endpoint
 
 ```typescript
 {
-  success: true,
-  data: {
-    sessionJwt: string,
+  sessionJwt: string,
     plyrId: string,
     nonce: string,
     gameId: string,
     primaryAddress: string,
     mirrorAddress: string
-  }
-}
+ }
 ```
 
 {% endtab %}
@@ -44,10 +41,45 @@ description: User login endpoint
 
 ```typescript
 {
-  success: false,
   error: string,
   data: null
 }
 ```
 
 {% endtab %} {% endtabs %}
+
+## Example Usage
+
+```javascript
+const timestamp = Date.now().toString();
+const body = {
+    plyrId: 'player123',
+    otp: '123456', // 2FA token from authenticator app
+    expiresIn: 3600, // Session will expire in 1 hour
+    gameId: 'game123' // Your game's identifier
+};
+
+const hmac = generateHmacSignature(timestamp, body, secretKey);
+
+const response = await axios.post(apiEndpoint + '/user/login', body, {
+    headers: {
+        apikey: apiKey,
+        signature: hmac,
+        timestamp: timestamp
+    }
+});
+
+// Store session information securely
+const {
+    sessionJwt, // JWT token for future API calls
+    plyrId, // Player's ID
+    nonce, // Unique nonce for this session
+    gameId, // Game identifier
+    primaryAddress, // User's primary wallet address
+    mirrorAddress // User's mirror wallet address
+} = response.data;
+
+// Use sessionJwt for subsequent authenticated API calls
+```
+
+{% hint style="warning" %} Store the session JWT securely and never expose it in client-side code or logs. {% endhint %} {% hint style="info" %} The session JWT is required for most API endpoints and should be included in the request headers. {% endhint %}

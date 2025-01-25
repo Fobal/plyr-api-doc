@@ -26,31 +26,23 @@ description: Get user activity logs
 
 ```typescript
 {
-  success: true,
-  data: {
     logs: Array<{
-      timestamp: number,
-      action: string,
-      details: {
-        [key: string]: any
-      }
-    }>
-  }
+        timestamp: number;
+        action: string;
+        details: {
+            [key: string]: any;
+        };
+    }>;
 }
 ```
 
-{% endtab %}
-
-{% tab title="Error Response (404)" %}
+{% endtab %} {% tab title="Error Response (404)" %} {% tab title="Error Response (400)" %}
 
 ```typescript
 {
-  success: false,
   error: "Failed to retrieve activity logs",
   data: null
 }
 ```
 
-```plaintext
-
-```
+{% endtab %} {% endtabs %}

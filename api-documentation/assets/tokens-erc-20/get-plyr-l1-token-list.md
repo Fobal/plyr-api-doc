@@ -13,8 +13,6 @@ description: Get list of available PLYR L1 tokens and their details including pr
 
 ```typescript
 {
-  success: true,
-  data: {
     name: string,
     timestamp: string,
     version: {
@@ -46,8 +44,7 @@ description: Get list of available PLYR L1 tokens and their details including pr
       updatedAt: string,
       nextUpdatedAt: string
     }>
-  }
-}
+ }
 ```
 
 {% endtab %}
@@ -56,7 +53,7 @@ description: Get list of available PLYR L1 tokens and their details including pr
 
 ```typescript
 {
-  success: false,
+
   error: "Failed to retrieve token list",
   data: null
 }

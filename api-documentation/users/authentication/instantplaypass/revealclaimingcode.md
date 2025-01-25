@@ -35,10 +35,7 @@ description: Reveal Claiming Code endpoint documentation
 
 ```typescript
 {
-  success: true,
-  data: {
-    claimingCode: string  // The revealed claiming code
-  }
+    claimingCode: string; // The revealed claiming code
 }
 ```
 
@@ -48,10 +45,31 @@ description: Reveal Claiming Code endpoint documentation
 
 ```typescript
 {
-  success: false,
   error: string,
   data: null
 }
 ```
 
 {% endtab %} {% endtabs %}
+
+## Example Usage
+
+```javascript
+const timestamp = Date.now().toString();
+const body = {
+    sessionJwt: 'eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9...' // IPP Session JWT from registration
+};
+
+const hmac = generateHmacSignature(timestamp, body, secretKey);
+
+const response = await axios.post(apiEndpoint + '/instantPlayPass/reveal/claimingCode', body, {
+    headers: {
+        apikey: apiKey,
+        signature: hmac,
+        timestamp: timestamp
+    }
+});
+
+// Get the claiming code
+const { claimingCode } = response.data;
+```

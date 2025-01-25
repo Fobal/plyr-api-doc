@@ -1,20 +1,20 @@
 ---
-description: Get user's token balance
+description: Get user balance endpoint
 ---
 
 # Get User Token Balance
 
-{% hint style="info" %} Retrieve the token balance for a specific user using either PLYR ID or Primary address. {% endhint %}
+{% hint style="info" %} Retrieve token balance for a user. Can query by PLYR ID or primary wallet address. {% endhint %}
 
-**Endpoint:** `/user/balance/{searchTxt}/{tokenName?}`  
+**Endpoint:** `/user/balance/{identifier}/{tokenName?}`  
 **Method:** GET
 
 {% tabs %} {% tab title="Request Parameters" %}
 
 ```typescript
 {
-  searchTxt: string,   // The player's PLYR ID or Primary address
-  tokenName?: string   // Optional token name parameter
+    identifier: string;  // PLYR ID or primary wallet address
+    tokenName?: string; // Optional token name filter
 }
 ```
 
@@ -24,12 +24,10 @@ description: Get user's token balance
 
 ```typescript
 {
-  success: true,
-  data: {
-    balance: string,  // Token balance as string
-    decimals: number  // Token decimals
-  }
-}
+  balances: {
+      [tokenName: string]: string // Map of token name to balance
+    }
+ }
 ```
 
 {% endtab %}
@@ -38,21 +36,43 @@ description: Get user's token balance
 
 ```typescript
 {
-  success: false,
-  error: "Failed to retrieve token balance",
+  error: "User not found",
   data: null
 }
 ```
 
 {% endtab %} {% endtabs %}
 
-**Examples:**
+{% hint style="info" %} If no token name is provided, the endpoint returns balances for all tokens the user holds. {% endhint %}
 
-```typescript
-// Using PLYR ID
-/user/balance/tonnystripes
-// Using Primary address
-/user/balance/0x...
-// With specific token
-/user/balance/tonnystripes/USDT
+## Example Usage
+
+```javascript
+const timestamp = Date.now().toString();
+// Can use either PLYR ID or wallet address
+const identifier = 'player123'; // or '0x742d35Cc6634C0532925a3b844Bc454e4438f44e'
+const tokenName = 'TOKEN1'; // Optional: specific token to query
+
+// Since this is a GET request with no body, pass null as the body for HMAC
+const hmac = generateHmacSignature(timestamp, null, secretKey);
+
+// Build URL based on whether tokenName is provided
+const url = `/user/balance/${identifier}/${tokenName}`;
+
+const response = await axios.get(apiEndpoint + url, {
+    headers: {
+        apikey: apiKey,
+        signature: hmac,
+        timestamp: timestamp
+    }
+});
+
+// Response will contain token balances
+const { balances } = response.data;
+
+// Process balances
+Object.entries(balances).forEach(([tokenName, balance]) => {
+    console.log(`Balance for ${tokenName}:`, balance);
+    // Use balances in your application
+});
 ```

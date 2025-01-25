@@ -23,9 +23,7 @@ description: Get the status of a task message
 
 ```typescript
 {
-  success: true,
-  data: {
-    taskId: string;
+  taskId: string;
     taskData: {
         '0': string;
         '1': {
@@ -44,8 +42,7 @@ description: Get the status of a task message
     hash: string;
     errorMessage?: string;
     completedAt: string;
-  }
-}
+ }
 ```
 
 {% endtab %}
@@ -54,10 +51,33 @@ description: Get the status of a task message
 
 ```typescript
 {
-  success: false,
   error: "Task not found",
   data: null
 }
 ```
 
 {% endtab %} {% endtabs %}
+
+## Example Usage
+
+```javascript
+// Setup request parameters
+const timestamp = Date.now().toString();
+const taskId = 'task_abc123xyz789';
+
+// Generate HMAC signature (empty body for GET request)
+const hmac = generateHmacSignature(timestamp, {}, secretKey);
+
+// Make the API request
+const response = await axios.get(apiEndpoint + '/task/status/' + taskId, {
+    headers: {
+        apikey: apiKey,
+        signature: hmac,
+        timestamp: timestamp
+    }
+});
+```
+
+{% hint style="info" %} Tasks are asynchronous operations that may take some time to complete. Use this endpoint to check their status. {% endhint %}
+
+{% hint style="warning" %} Task status should be polled at reasonable intervals (e.g., every 1-2 seconds) to avoid rate limiting. {% endhint %}

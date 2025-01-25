@@ -23,10 +23,7 @@ description: Logout endpoint documentation
 
 ```typescript
 {
-  success: true,
-  data: {
-    message: "Successfully logged out"
-  }
+    message: 'Successfully logged out';
 }
 ```
 
@@ -36,10 +33,30 @@ description: Logout endpoint documentation
 
 ```typescript
 {
-  success: false,
   error: "Invalid session token",
   data: null
 }
 ```
 
 {% endtab %} {% endtabs %}
+
+## Example Usage
+
+```javascript
+const timestamp = Date.now().toString();
+const body = {
+    sessionJwt: 'eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9...' // Active session JWT
+};
+
+const hmac = generateHmacSignature(timestamp, body, secretKey);
+
+const response = await axios.post(apiEndpoint + '/user/logout', body, {
+    headers: {
+        apikey: apiKey,
+        signature: hmac,
+        timestamp: timestamp
+    }
+});
+```
+
+{% hint style="info" %} After logout, the session JWT becomes invalid and cannot be used for further API calls. {% endhint %} {% hint style="warning" %} Always clean up session data in your application after a successful logout. {% endhint %}

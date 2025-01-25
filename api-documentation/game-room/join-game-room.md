@@ -15,6 +15,7 @@ description: Join players to a game room
 {
     roomId: string; // The ID of the room to join
     sessionJwts: string[]; // Array of session JWTs for players joining the room
+    sync?: boolean; // When true, returns direct response. When false/undefined, returns a task ID for polling status
 }
 ```
 
@@ -22,25 +23,22 @@ description: Join players to a game room
 
 {% tab title="Success Response (200)" %}
 
+When sync=false (default):
+
 ```typescript
 {
-    success: true,
-    data: {
-        task: {
-            id: string; // Task ID for checking status
-        }
+    task: {
+        id: string; // Task ID for checking status
     }
 }
 ```
 
-After task completion:
+When sync=true:
 
 ```typescript
 {
-    taskData: {
-        status: 'SUCCESS';
-        // Additional task data
-    }
+    roomId: string;
+    plyrIds: string[]; // Array of player IDs that joined
 }
 ```
 
@@ -50,9 +48,7 @@ After task completion:
 
 ```typescript
 {
-    success: false,
     error: string;
-    data: null;
 }
 ```
 
@@ -61,10 +57,12 @@ After task completion:
 ## Example Usage
 
 ```javascript
+// Task=true usage
 const timestamp = Date.now().toString();
 const body = {
-    roomId: 'room123',
-    sessionJwts: ['jwt1', 'jwt2'] // Can add multiple session JWTs
+    roomId: '123',
+    sessionJwts: ['jwt1', 'jwt2'], // Can add multiple session JWTs
+    sync: true // or omit for task-based response
 };
 
 const hmac = generateHmacSignature(timestamp, body, secretKey);
@@ -76,8 +74,4 @@ const response = await axios.post(apiEndpoint + '/game/join', body, {
         timestamp: timestamp
     }
 });
-
-// Check task status
-const taskId = response.data.task.id;
-// Poll task status until not PENDING
 ```
