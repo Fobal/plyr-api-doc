@@ -9,24 +9,12 @@ description: Register Instant PlayPass endpoint documentation
 **Endpoint:** `/instantPlayPass/register`  
 **Method:** POST
 
-{% tabs %} {% tab title="Request Headers" %}
-
-```typescript
-{
-  apikey: string,      // Your API key
-  signature: string,   // HMAC signature
-  timestamp: string    // Current timestamp
-}
-```
-
-{% endtab %}
-
 {% tab title="Request Body" %}
 
 ```typescript
 {
-  tokens: string[],    // Array of tokens (e.g. ['plyr', 'gamr'])
-  sync?: boolean      // Optional sync flag
+    tokens: string[]; // Array of tokens (e.g. ['plyr', 'gamr'])
+    sync?: boolean; // Optional sync flag
 }
 ```
 

@@ -9,18 +9,6 @@ description: Reveal Claiming Code endpoint documentation
 **Endpoint:** `/instantPlayPass/reveal/claimingCode`  
 **Method:** POST
 
-{% tabs %} {% tab title="Request Headers" %}
-
-```typescript
-{
-  apikey: string,      // Your API key
-  signature: string,   // HMAC signature
-  timestamp: string    // Current timestamp
-}
-```
-
-{% endtab %}
-
 {% tab title="Request Body" %}
 
 ```typescript

@@ -9,18 +9,6 @@ description: Verify Claiming Code endpoint documentation
 **Endpoint:** `/instantPlayPass/verify/claimingCode/{claimingCode}`  
 **Method:** GET
 
-{% tabs %} {% tab title="Request Headers" %}
-
-```typescript
-{
-  apikey: string,      // Your API key
-  signature: string,   // HMAC signature
-  timestamp: string    // Current timestamp
-}
-```
-
-{% endtab %}
-
 {% tab title="Path Parameters" %}
 
 ```typescript
