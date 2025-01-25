@@ -1,48 +1,49 @@
 # Table of contents
 
-* [README](README.md)
+## API DOCUMENTATION
 
-## Authentication
-
-* [Overview](users/authentication.md)
-* [Login](users/login.md)
-* [Logout](users/logout.md)
-* [Login and Approve](users/login-and-approve.md)
-* [Get Basic User Info](users/get-basic-user-info.md)
-* [Check Session JWT](users/check-session-jwt.md)
-* [Get Avatar](users/get-avatar.md)
-
-## Game Room
-
-* [Create Game Room](gameroom/create.md)
-* [Join Game Room](gameroom/join.md)
-* [Pay Game Room](gameroom/pay.md)
-
-## Helpers
-
-* [Overview](gameroom/helpers.md)
-  * [Create, Join and Pay](gameroom/helpers/create-join-pay.md)
-  * [Join and Pay](gameroom/helpers/join-pay.md)
-  * [Earn and Leave](gameroom/helpers/earn-leave.md)
-  * [Earn, Leave and End](gameroom/helpers/earn-leave-end.md)
-  * [Is Joined Game Room](gameroom/helpers/is-joined-game-room.md)
-
-## Tokens (ERC-20)
-
-* [Get PLYR L1 Token List](assets/get-plyr-l1-token-list.md)
-* [Get User Token Balance](assets/get-user-token-balance.md)
-* [Get User Token Allowance](assets/get-user-token-allowance.md)
-* [Approve User Token Spending](assets/approve-user-token-spending.md)
-* [Revoke User Token Allowance](assets/revoke-user-token-allowance.md)
-
-## NFTs (ERC-721)
-
-* [Get User NFTs](assets/get-user-nfts.md)
-* [Get User Zoo Genes](assets/get-user-zoo-genes.md)
-
-## Misc
-
-* [Get Session JWT Public Key](misc/get-session-jwt-public-key.md)
-* [Verify JWT Locally](misc/verify-jwt-locally.md)
-* [Activity Logs](misc/activity-logs.md)
-* [Get Task Message Status](misc/get-task-message-status.md)
+* [Users](README.md)
+  * [Authentication](api-documentation/users/authentication/README.md)
+    * [PLYR\[ID\]](api-documentation/users/authentication/plyr-id/README.md)
+      * [Login](api-documentation/users/authentication/plyr-id/login.md)
+      * [Login and Approve](api-documentation/users/authentication/plyr-id/login-and-approve.md)
+      * [Logout](api-documentation/users/authentication/plyr-id/logout.md)
+    * [InstantPlayPass](api-documentation/users/authentication/instantplaypass/README.md)
+      * [RegisterIPP](api-documentation/users/authentication/instantplaypass/registeripp.md)
+      * [RevealClaimingCode](api-documentation/users/authentication/instantplaypass/revealclaimingcode.md)
+      * [VerifyClaimingCode](api-documentation/users/authentication/instantplaypass/verifyclaimingcode.md)
+    * [PLYR\[CONNECT\]](api-documentation/users/authentication/plyr-connect.md)
+  * [Check Session JWT](api-documentation/users/check-session-jwt.md)
+  * [Get Basic User Info](api-documentation/users/get-basic-user-info.md)
+  * [Get Avatar](api-documentation/users/get-avatar.md)
+* [Game room](api-documentation/game-room/README.md)
+  * [Create Game Room](api-documentation/game-room/create.md)
+  * [Join Game Room](api-documentation/game-room/join.md)
+  * [Pay Game Room](api-documentation/game-room/pay.md)
+  * [Earn](api-documentation/game-room/pay-1.md)
+  * [Leave](api-documentation/game-room/pay-2.md)
+  * [End](api-documentation/game-room/end.md)
+  * [Helpers](api-documentation/game-room/helpers/README.md)
+    * [Is Joined Game Room](api-documentation/game-room/helpers/is-joined-game-room.md)
+    * [Create, Join and Pay](api-documentation/game-room/helpers/create-join-pay.md)
+    * [Join and Pay](api-documentation/game-room/helpers/join-pay.md)
+    * [Earn and Leave](api-documentation/game-room/helpers/earn-leave.md)
+    * [Earn, Leave and End](api-documentation/game-room/helpers/earn-leave-end.md)
+* [Assets](api-documentation/assets/README.md)
+  * [Tokens ( ERC-20 )](api-documentation/assets/tokens-erc-20/README.md)
+    * [Get PLYR L1 Token List](api-documentation/assets/tokens-erc-20/get-plyr-l1-token-list.md)
+    * [Get User Token Balance](api-documentation/assets/tokens-erc-20/get-user-token-balance.md)
+    * [Get User Token Allowance](api-documentation/assets/tokens-erc-20/get-user-token-allowance.md)
+    * [Approve User Token Spending](api-documentation/assets/tokens-erc-20/approve-user-token-spending.md)
+    * [Revoke User Token Allowance](api-documentation/assets/tokens-erc-20/revoke-user-token-allowance.md)
+  * [NFTs ( ERC-721 )](api-documentation/assets/nfts-erc-721/README.md)
+    * [Get User NFTs](api-documentation/assets/nfts-erc-721/get-user-nfts.md)
+    * [Official PLYR NFTs](api-documentation/assets/nfts-erc-721/official-plyr-nfts/README.md)
+      * [Get User Zoo Genes](api-documentation/assets/nfts-erc-721/official-plyr-nfts/get-user-zoo-genes.md)
+      * [Get User Zoo Boosters](api-documentation/assets/nfts-erc-721/official-plyr-nfts/get-user-zoo-boosters.md)
+      * [Get User Zoo Elixirs](api-documentation/assets/nfts-erc-721/official-plyr-nfts/get-user-zoo-elixirs.md)
+* [Misc](api-documentation/misc/README.md)
+  * [Get Session JWT Public Key](api-documentation/misc/get-session-jwt-public-key.md)
+  * [Verify JWT Locally](api-documentation/misc/verify-jwt-locally.md)
+  * [Activity Logs](api-documentation/misc/activity-logs.md)
+  * [Get Task Message Status](api-documentation/misc/get-task-message-status.md)
