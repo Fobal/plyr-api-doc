@@ -23,10 +23,10 @@ description: Check session JWT validity endpoint
 
 ```typescript
 {
-  isValid: boolean,
-    plyrId?: string,
-    walletAddress?: string
- }
+    isValid: boolean;
+    plyrId?: string;
+    walletAddress?: string;
+}
 ```
 
 {% endtab %}

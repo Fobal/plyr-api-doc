@@ -22,28 +22,23 @@ description: Get user's PLYR Zoo Genes NFTs
 {% tab title="Success Response (200)" %}
 
 ```typescript
-{
-  success: true,
-  data: {
-    zooGenes: Array<{
-      tokenId: string,
-      metadata: {
-        name: string,
-        description: string,
-        image: string,
+Array<{
+    tokenId: string;
+    metadata: {
+        name: string;
+        description: string;
+        image: string;
         attributes: Array<{
-          trait_type: string,
-          value: string | number
-        }>,
+            trait_type: string;
+            value: string | number;
+        }>;
         genes: {
-          species: string,
-          rarity: string,
-          generation: number
-        }
-      }
-    }>
-  }
-}
+            species: string;
+            rarity: string;
+            generation: number;
+        };
+    };
+}>;
 ```
 
 {% endtab %}
@@ -52,9 +47,7 @@ description: Get user's PLYR Zoo Genes NFTs
 
 ```typescript
 {
-  success: false,
   error: "Failed to retrieve Zoo Genes NFTs",
-  data: null
 }
 ```
 

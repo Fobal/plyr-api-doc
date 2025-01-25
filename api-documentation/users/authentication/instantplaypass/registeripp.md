@@ -36,14 +36,14 @@ description: Register Instant PlayPass endpoint documentation
 
 ```typescript
 {
-    sessionJwt: string,    // Session JWT token
-    plyrId: string,        // Player ID
-    gameId: string,        // Game ID
-    primaryAddress: string, // Primary wallet address
-    mirrorAddress: string, // Mirror wallet address
-    avatar: string,        // Avatar URL
-    ippClaimed: boolean,   // Whether IPP is claimed
-    isIPP: boolean        // Whether this is an IPP session
+    sessionJwt: string; // Session JWT token
+    plyrId: string; // Player ID
+    gameId: string; // Game ID
+    primaryAddress: string; // Primary wallet address
+    mirrorAddress: string; // Mirror wallet address
+    avatar: string; // Avatar URL
+    ippClaimed: boolean; // Whether IPP is claimed
+    isIPP: boolean; // Whether this is an IPP session
 }
 ```
 

@@ -23,11 +23,11 @@ description: Get basic user information endpoint
 
 ```typescript
 {
-  plyrId: string,
-    username: string,
-    walletAddress: string,
-    avatarUrl: string
- }
+    plyrId: string;
+    username: string;
+    walletAddress: string;
+    avatarUrl: string;
+}
 ```
 
 {% endtab %}
@@ -36,7 +36,7 @@ description: Get basic user information endpoint
 
 ```typescript
 {
-    error: 'User not found';
+    error: string;
 }
 ```
 

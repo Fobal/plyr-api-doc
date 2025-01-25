@@ -24,12 +24,7 @@ description: Get user balance endpoint
 
 ```typescript
 {
-  success: true,
-  data: {
-    balances: {
-      [tokenName: string]: string // Map of token name to balance
-    }
-  }
+  [tokenName: string]: string; // Map of token name to balance array
 }
 ```
 
@@ -39,9 +34,7 @@ description: Get user balance endpoint
 
 ```typescript
 {
-  success: false,
   error: "User not found",
-  data: null
 }
 ```
 

@@ -25,10 +25,7 @@ description: Join an existing game room
 
 ```typescript
 {
-  success: true,
-  data: {
-    taskId: string
-  }
+    taskId: string;
 }
 ```
 
@@ -38,9 +35,7 @@ description: Join an existing game room
 
 ```typescript
 {
-  success: false,
   error: "Failed to join game room",
-  data: null
 }
 ```
 

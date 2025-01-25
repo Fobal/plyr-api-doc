@@ -4,15 +4,13 @@ description: Process payments for game room players
 
 # Leave
 
-{% hint style="info" %}
-Process payments for players in a game room.
-{% endhint %}
+{% hint style="info" %} Process payments for players in a game room. {% endhint %}
 
 **Endpoint:** `/game/pay`\
 **Method:** POST
 
-{% tabs %}
-{% tab title="Request Body" %}
+{% tabs %} {% tab title="Request Body" %}
+
 ```typescript
 {
   roomId: string,
@@ -22,26 +20,25 @@ Process payments for players in a game room.
   sync: boolean          // Whether to wait for task completion
 }
 ```
+
 {% endtab %}
 
 {% tab title="Success Response (200)" %}
+
 ```typescript
 {
-  success: true,
-  data: {
-    taskId: string
-  }
+    taskId: string;
 }
 ```
+
 {% endtab %}
 
 {% tab title="Error Response (404)" %}
+
 ```typescript
 {
-  success: false,
   error: "Failed to process payment",
-  data: null
 }
 ```
-{% endtab %}
-{% endtabs %}
+
+{% endtab %} {% endtabs %}

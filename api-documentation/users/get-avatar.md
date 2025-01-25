@@ -23,10 +23,8 @@ description: Get multiple users' avatars endpoint
 
 ```typescript
 {
-  avatars: {
-      [plyrId: string]: string // Map of plyrId to avatarUrl
-    }
- }
+    [plyrId: string]: string; // Map of plyrId to avatarUrl
+}
 ```
 
 {% endtab %}
@@ -35,7 +33,7 @@ description: Get multiple users' avatars endpoint
 
 ```typescript
 {
-    error: 'Invalid request format';
+    error: string;
 }
 ```
 

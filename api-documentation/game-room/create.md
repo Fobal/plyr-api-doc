@@ -24,11 +24,6 @@ description: Create a new game room
 
 ```typescript
 {
-  success: true,
-  data: {
-    roomId: string,
-    taskId: string
-  }
 }
 ```
 
@@ -38,9 +33,7 @@ description: Create a new game room
 
 ```typescript
 {
-  success: false,
   error: "Failed to create game room",
-  data: null
 }
 ```
 

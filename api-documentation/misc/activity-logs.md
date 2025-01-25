@@ -6,7 +6,7 @@ description: Get user activity logs
 
 {% hint style="info" %} Retrieve activity logs for a specific user. {% endhint %}
 
-**Endpoint:** `/activityLogs/{plyrId}`  
+**Endpoint:** `/activityLogs/{plyrId}`\
 **Method:** GET
 
 {% tabs %} {% tab title="Request Parameters" %}
@@ -36,11 +36,13 @@ description: Get user activity logs
 }
 ```
 
-{% endtab %} {% tab title="Error Response (404)" %} {% tab title="Error Response (400)" %}
+{% endtab %}
+
+{% tab title="Error Response (400)" %}
 
 ```typescript
 {
-  error: "Failed to retrieve activity logs",
+    error: string;
 }
 ```
 

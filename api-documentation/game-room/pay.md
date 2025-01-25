@@ -27,10 +27,7 @@ description: Process payments for game room players
 
 ```typescript
 {
-  success: true,
-  data: {
-    taskId: string
-  }
+    taskId: string;
 }
 ```
 
@@ -40,9 +37,7 @@ description: Process payments for game room players
 
 ```typescript
 {
-  success: false,
   error: "Failed to process payment",
-  data: null
 }
 ```
 

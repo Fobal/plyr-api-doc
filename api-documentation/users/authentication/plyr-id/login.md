@@ -26,13 +26,13 @@ description: User login endpoint
 
 ```typescript
 {
-  sessionJwt: string,
-    plyrId: string,
-    nonce: string,
-    gameId: string,
-    primaryAddress: string,
-    mirrorAddress: string
- }
+    sessionJwt: string;
+    plyrId: string;
+    nonce: string;
+    gameId: string;
+    primaryAddress: string;
+    mirrorAddress: string;
+}
 ```
 
 {% endtab %}

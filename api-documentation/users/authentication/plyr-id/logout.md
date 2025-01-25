@@ -23,7 +23,7 @@ description: Logout endpoint documentation
 
 ```typescript
 {
-    message: 'Successfully logged out';
+    message: string;
 }
 ```
 
@@ -33,7 +33,7 @@ description: Logout endpoint documentation
 
 ```typescript
 {
-    error: 'Invalid session token';
+    error: string;
 }
 ```
 

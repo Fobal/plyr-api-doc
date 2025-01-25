@@ -51,7 +51,7 @@ description: Get the status of a task message
 
 ```typescript
 {
-    error: 'Task not found';
+    error: string;
 }
 ```
 
