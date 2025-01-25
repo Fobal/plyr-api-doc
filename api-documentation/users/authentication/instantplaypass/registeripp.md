@@ -2,26 +2,26 @@
 description: Register Instant PlayPass endpoint documentation
 ---
 
-# Register Instant PlayPass
+# RegisterIPP
 
-{% hint style="info" %} Register a new Instant PlayPass session with specified tokens. {% endhint %}
+{% hint style="info" %}
+Register a new Instant PlayPass session with specified tokens.
+{% endhint %}
 
-**Endpoint:** `/instantPlayPass/register`  
+**Endpoint:** `/instantPlayPass/register`\
 **Method:** POST
 
-{% tabs %} {% tab title="Request Body" %}
-
+{% tabs %}
+{% tab title="Request Body" %}
 ```typescript
 {
     tokens: string[]; // Array of tokens (e.g. ['plyr', 'gamr'])
     sync?: boolean; // Optional sync flag
 }
 ```
-
 {% endtab %}
 
 {% tab title="Success Response (200)" %}
-
 ```typescript
 {
     sessionJwt: string; // Session JWT token
@@ -34,20 +34,20 @@ description: Register Instant PlayPass endpoint documentation
     isIPP: boolean; // Whether this is an IPP session
 }
 ```
-
 {% endtab %}
 
 {% tab title="Error Response" %}
-
 ```typescript
 {
     error: string;
 }
 ```
+{% endtab %}
+{% endtabs %}
 
-{% endtab %} {% endtabs %}
-
-{% hint style="info" %} After successful registration, use the "Reveal Claiming Code" endpoint to get the code for the user. {% endhint %} {% hint style="warning" %} Token synchronization may take additional time when the sync flag is enabled. {% endhint %}
+{% hint style="info" %}
+After successful registration, use the "Reveal Claiming Code" endpoint to get the code for the user.
+{% endhint %}
 
 ## Example Usage
 
