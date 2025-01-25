@@ -9,7 +9,7 @@ description: Verify Claiming Code endpoint documentation
 **Endpoint:** `/instantPlayPass/verify/claimingCode/{claimingCode}`  
 **Method:** GET
 
-{% tab title="Path Parameters" %}
+{% tabs %} {% tab title="Request Parameters" %}
 
 ```typescript
 claimingCode: string; // The claiming code to verify
@@ -21,9 +21,9 @@ claimingCode: string; // The claiming code to verify
 
 ```typescript
 {
-  valid: boolean,     // Whether the claiming code is valid
-    status: string      // Status of the claiming code
- }
+    valid: boolean; // Whether the claiming code is valid
+    status: string; // Status of the claiming code
+}
 ```
 
 {% endtab %}

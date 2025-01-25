@@ -9,7 +9,7 @@ description: Reveal Claiming Code endpoint documentation
 **Endpoint:** `/instantPlayPass/reveal/claimingCode`  
 **Method:** POST
 
-{% tab title="Request Body" %}
+{% tabs %} {% tab title="Request Body" %}
 
 ```typescript
 {

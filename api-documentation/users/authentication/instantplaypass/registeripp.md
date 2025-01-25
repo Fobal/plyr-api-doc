@@ -9,7 +9,7 @@ description: Register Instant PlayPass endpoint documentation
 **Endpoint:** `/instantPlayPass/register`  
 **Method:** POST
 
-{% tab title="Request Body" %}
+{% tabs %} {% tab title="Request Body" %}
 
 ```typescript
 {
