@@ -4,13 +4,15 @@ description: Get user activity logs
 
 # Activity Logs
 
-{% hint style="info" %} Retrieve activity logs for a specific user. {% endhint %}
+{% hint style="info" %}
+Retrieve activity logs for a specific user.
+{% endhint %}
 
-**Endpoint:** `/activityLogs/{plyrId}`  
+**Endpoint:** `/activityLogs/{plyrId}`\
 **Method:** GET
 
-{% tabs %} {% tab title="Request Parameters" %}
-
+{% tabs %}
+{% tab title="Request Parameters" %}
 ```typescript
 {
   plyrId: string,     // The player's unique identifier
@@ -19,11 +21,9 @@ description: Get user activity logs
   limit?: number      // Maximum number of logs to return (optional)
 }
 ```
-
 {% endtab %}
 
 {% tab title="Success Response (200)" %}
-
 ```typescript
 {
     logs: Array<{
@@ -35,14 +35,14 @@ description: Get user activity logs
     }>;
 }
 ```
+{% endtab %}
 
-{% endtab %} {% tab title="Error Response (404)" %} {% tab title="Error Response (400)" %}
-
+{% tab title="Error Response (400)" %}
 ```typescript
 {
   error: "Failed to retrieve activity logs",
   data: null
 }
 ```
-
-{% endtab %} {% endtabs %}
+{% endtab %}
+{% endtabs %}
