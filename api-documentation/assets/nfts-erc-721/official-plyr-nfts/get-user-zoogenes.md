@@ -2,25 +2,25 @@
 description: Get user's ZooGenes NFTs
 ---
 
-# Get User ZooGenes
+# Get User Zoo Genes
 
-{% hint style="info" %} Retrieve the PLYR ZooGenes NFTs for a specific user. {% endhint %}
+{% hint style="info" %}
+Retrieve the PLYR ZooGenes NFTs for a specific user.
+{% endhint %}
 
-**Endpoint:** `/nft/avalanche/zoogenes/{plyrId}`  
+**Endpoint:** `/nft/avalanche/zoogenes/{plyrId}`\
 **Method:** GET
 
-{% tabs %} {% tab title="Request Parameters" %}
-
+{% tabs %}
+{% tab title="Request Parameters" %}
 ```typescript
 {
     plyrId: string; // The user's PlyrId
 }
 ```
-
 {% endtab %}
 
 {% tab title="Success Response (200)" %}
-
 ```typescript
 {
     data: Array<{
@@ -41,18 +41,16 @@ description: Get user's ZooGenes NFTs
     }>;
 }
 ```
-
 {% endtab %}
 
 {% tab title="Error Response (404)" %}
-
 ```typescript
 {
     data: null;
 }
 ```
-
-{% endtab %} {% endtabs %}
+{% endtab %}
+{% endtabs %}
 
 ## Example Usage
 
@@ -83,4 +81,6 @@ zoogenes.forEach((nft) => {
 });
 ```
 
-{% hint style="info" %} ZooGenes are special NFTs with unique attributes that can be used in various PLYR games and experiences. {% endhint %}
+{% hint style="info" %}
+ZooGenes are special NFTs with unique attributes that can be used in various PLYR games and experiences. [https://opensea.io/collection/zoogenes](https://opensea.io/collection/zoogenes)
+{% endhint %}
