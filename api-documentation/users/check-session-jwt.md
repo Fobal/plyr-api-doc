@@ -35,8 +35,7 @@ description: Check session JWT validity endpoint
 
 ```typescript
 {
-  error: string,
-  data: null
+    error: string;
 }
 ```
 

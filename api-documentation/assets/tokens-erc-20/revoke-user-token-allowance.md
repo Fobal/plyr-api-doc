@@ -37,7 +37,6 @@ description: Revoke user token allowance for a game
 ```typescript
 {
     error: string;
-    data: null;
 }
 ```
 

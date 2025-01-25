@@ -44,8 +44,7 @@ claimingCode: string; // The claiming code to verify
 
 ```typescript
 {
-  error: string,
-  data: null
+    error: string;
 }
 ```
 

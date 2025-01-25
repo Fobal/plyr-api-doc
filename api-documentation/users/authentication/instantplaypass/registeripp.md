@@ -53,8 +53,7 @@ description: Register Instant PlayPass endpoint documentation
 
 ```typescript
 {
-  error: string,
-  data: null
+    error: string;
 }
 ```
 

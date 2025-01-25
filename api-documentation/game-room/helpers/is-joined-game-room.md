@@ -35,7 +35,6 @@ description: Check if a player has joined a game room
 ```typescript
 {
     error: string;
-    data: null;
 }
 ```
 

@@ -31,8 +31,7 @@ description: Get session JWT public key endpoint
 
 ```typescript
 {
-  error: string,
-  data: null
+    error: string;
 }
 ```
 

@@ -33,8 +33,7 @@ description: Logout endpoint documentation
 
 ```typescript
 {
-  error: "Invalid session token",
-  data: null
+    error: 'Invalid session token';
 }
 ```
 

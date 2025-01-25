@@ -39,7 +39,6 @@ description: Approve user token spending for a game
 ```typescript
 {
     error: string;
-    data: null;
 }
 ```
 

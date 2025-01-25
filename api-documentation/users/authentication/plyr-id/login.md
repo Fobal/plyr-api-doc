@@ -41,8 +41,7 @@ description: User login endpoint
 
 ```typescript
 {
-  error: string,
-  data: null
+    error: string;
 }
 ```
 

@@ -55,7 +55,6 @@ When sync=true:
 ```typescript
 {
     error: string;
-    data: null;
 }
 ```
 

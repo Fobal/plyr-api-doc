@@ -45,8 +45,7 @@ description: Reveal Claiming Code endpoint documentation
 
 ```typescript
 {
-  error: string,
-  data: null
+    error: string;
 }
 ```
 

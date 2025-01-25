@@ -23,7 +23,7 @@ description: Get the status of a task message
 
 ```typescript
 {
-  taskId: string;
+    taskId: string;
     taskData: {
         '0': string;
         '1': {
@@ -42,7 +42,7 @@ description: Get the status of a task message
     hash: string;
     errorMessage?: string;
     completedAt: string;
- }
+}
 ```
 
 {% endtab %}
@@ -51,8 +51,7 @@ description: Get the status of a task message
 
 ```typescript
 {
-  error: "Task not found",
-  data: null
+    error: 'Task not found';
 }
 ```
 

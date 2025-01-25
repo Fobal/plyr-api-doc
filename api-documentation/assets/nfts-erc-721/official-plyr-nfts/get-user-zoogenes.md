@@ -2,55 +2,55 @@
 description: Get user's ZooGenes NFTs
 ---
 
-# Get User Zoo Genes
+# Get User ZooGenes
 
-{% hint style="info" %}
-Retrieve the PLYR ZooGenes NFTs for a specific user.
-{% endhint %}
+{% hint style="info" %} Retrieve the PLYR ZooGenes NFTs for a specific user. {% endhint %}
 
-**Endpoint:** `/nft/avalanche/zoogenes/{plyrId}`\
+**Endpoint:** `/nft/avalanche/zoogenes/{plyrId}`  
 **Method:** GET
 
-{% tabs %}
-{% tab title="Request Parameters" %}
+{% tabs %} {% tab title="Request Parameters" %}
+
 ```typescript
 {
     plyrId: string; // The user's PlyrId
 }
 ```
+
 {% endtab %}
 
 {% tab title="Success Response (200)" %}
+
 ```typescript
-{
-    data: Array<{
-        owner: string;
-        uri: string;
-        collection: string;
-        quantity: string;
-        tokenId: string;
-        name: string;
-        image: string;
-        description: string;
-        attributes: Array<{
-            trait_type: string;
-            display_type?: string;
-            value: string | number;
-            max_value?: number;
-        }>;
+Array<{
+    owner: string;
+    uri: string;
+    collection: string;
+    quantity: string;
+    tokenId: string;
+    name: string;
+    image: string;
+    description: string;
+    attributes: Array<{
+        trait_type: string;
+        display_type?: string;
+        value: string | number;
+        max_value?: number;
     }>;
-}
+}>;
 ```
+
 {% endtab %}
 
 {% tab title="Error Response (404)" %}
+
 ```typescript
 {
-    data: null;
+    error: string;
 }
 ```
-{% endtab %}
-{% endtabs %}
+
+{% endtab %} {% endtabs %}
 
 ## Example Usage
 
@@ -81,6 +81,4 @@ zoogenes.forEach((nft) => {
 });
 ```
 
-{% hint style="info" %}
-ZooGenes are special NFTs with unique attributes that can be used in various PLYR games and experiences. [https://opensea.io/collection/zoogenes](https://opensea.io/collection/zoogenes)
-{% endhint %}
+{% hint style="info" %} ZooGenes are special NFTs with unique attributes that can be used in various PLYR games and experiences. {% endhint %}

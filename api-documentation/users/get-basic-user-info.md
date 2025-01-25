@@ -36,8 +36,7 @@ description: Get basic user information endpoint
 
 ```typescript
 {
-  error: "User not found",
-  data: null
+    error: 'User not found';
 }
 ```
 

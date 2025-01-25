@@ -35,8 +35,7 @@ description: Get multiple users' avatars endpoint
 
 ```typescript
 {
-  error: "Invalid request format",
-  data: null
+    error: 'Invalid request format';
 }
 ```
 

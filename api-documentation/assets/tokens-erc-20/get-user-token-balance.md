@@ -37,7 +37,6 @@ description: Get user balance endpoint
 ```typescript
 {
   error: "User not found",
-  data: null
 }
 ```
 

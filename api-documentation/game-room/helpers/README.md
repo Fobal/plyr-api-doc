@@ -1,16 +1,5 @@
 ---
 description: Helper endpoints for game room operations
-layout:
-  title:
-    visible: true
-  description:
-    visible: true
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: false
 ---
 
 # Helpers

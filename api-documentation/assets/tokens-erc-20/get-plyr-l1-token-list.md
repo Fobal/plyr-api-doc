@@ -53,9 +53,7 @@ description: Get list of available PLYR L1 tokens and their details including pr
 
 ```typescript
 {
-
   error: "Failed to retrieve token list",
-  data: null
 }
 ```
 

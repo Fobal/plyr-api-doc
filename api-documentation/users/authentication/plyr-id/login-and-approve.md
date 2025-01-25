@@ -43,8 +43,7 @@ description: User login with token approval endpoint
 
 ```typescript
 {
-  error: string,
-  data: null
+    error: string;
 }
 ```
 
