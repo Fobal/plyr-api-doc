@@ -1,22 +1,19 @@
 ---
-description: Revoke user token allowance for a game
+description: End a game room session
 ---
 
-# Revoke User Token Allowance
+# End Game Room
 
-{% hint style="info" %} Revokes a previously granted token allowance for a game. {% endhint %}
+{% hint style="info" %} Ends a game room session and cleans up associated resources. {% endhint %}
 
-**Endpoint:** `/game/revoke`  
+**Endpoint:** `/game/end`  
 **Method:** POST
 
 {% tabs %} {% tab title="Request Parameters" %}
 
 ```typescript
 {
-    plyrId: string; // The player ID
-    gameId: string; // The game ID
-    token: string; // Token name/symbol to revoke
-    otp: string; // One-time password for authorization
+    roomId: string; // The ID of the room to end
 }
 ```
 
@@ -28,7 +25,20 @@ description: Revoke user token allowance for a game
 {
     success: true,
     data: {
-        // Revocation details
+        task: {
+            id: string; // Task ID for checking status
+        }
+    }
+}
+```
+
+After task completion:
+
+```typescript
+{
+    taskData: {
+        status: 'SUCCESS';
+        // Additional task data
     }
 }
 ```
@@ -52,19 +62,20 @@ description: Revoke user token allowance for a game
 ```javascript
 const timestamp = Date.now().toString();
 const body = {
-    plyrId: 'player123',
-    gameId: 'game123',
-    token: 'TOKEN',
-    otp: '123456'
+    roomId: 'room123'
 };
 
 const hmac = generateHmacSignature(timestamp, body, secretKey);
 
-const response = await axios.post(apiEndpoint + '/game/revoke', body, {
+const response = await axios.post(apiEndpoint + '/game/end', body, {
     headers: {
         apikey: apiKey,
         signature: hmac,
         timestamp: timestamp
     }
 });
+
+// Check task status
+const taskId = response.data.task.id;
+// Poll task status until not PENDING
 ```

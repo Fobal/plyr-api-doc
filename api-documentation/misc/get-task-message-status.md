@@ -6,7 +6,7 @@ description: Get the status of a task message
 
 {% hint style="info" %} Check the status of an asynchronous task message. {% endhint %}
 
-**Endpoint:** `/task/{taskId}`  
+**Endpoint:** `/task/status/{taskId}`  
 **Method:** GET
 
 {% tabs %} {% tab title="Request Parameters" %}
@@ -25,10 +25,25 @@ description: Get the status of a task message
 {
   success: true,
   data: {
-    status: 'pending' | 'completed' | 'failed',
-    result?: any,
-    error?: string,
-    progress?: number
+    taskId: string;
+    taskData: {
+        '0': string;
+        '1': {
+            gameId: string;
+            plyrIds?: string[];
+            roomId?: string;
+            expiresIn?: number; // in seconds and only for createGameRoom
+        };
+        result?: {
+            gameId: string;
+            roomId: string;
+            roomAddress: string;
+        };
+    };
+    status: 'SUCCESS' | 'PENDING' | 'FAILED' | 'TIMEOUT';
+    hash: string;
+    errorMessage?: string;
+    completedAt: string;
   }
 }
 ```

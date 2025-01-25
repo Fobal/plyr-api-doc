@@ -4,16 +4,16 @@ description: Get basic user information endpoint
 
 # Get Basic User Info
 
-{% hint style="info" %} Retrieve basic information about a user. {% endhint %}
+{% hint style="info" %} Retrieve basic user information. Can query by PLYR ID or primary wallet address. {% endhint %}
 
-**Endpoint:** `/user/basic/{plyrId}`  
+**Endpoint:** `/user/info/{identifier}`  
 **Method:** GET
 
 {% tabs %} {% tab title="Request Parameters" %}
 
 ```typescript
 {
-    plyrId: string; // The player's unique identifier
+    identifier: string; // PLYR ID or primary wallet address
 }
 ```
 

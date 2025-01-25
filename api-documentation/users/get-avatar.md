@@ -1,19 +1,19 @@
 ---
-description: Get user avatar endpoint
+description: Get multiple users' avatars endpoint
 ---
 
-# Get Avatar
+# Get Avatars
 
-{% hint style="info" %} Retrieve a user's avatar image URL. {% endhint %}
+{% hint style="info" %} Retrieve avatar image URLs for multiple users. {% endhint %}
 
-**Endpoint:** `/user/avatar/{plyrId}`  
-**Method:** GET
+**Endpoint:** `/user/avatar`  
+**Method:** POST
 
-{% tabs %} {% tab title="Request Parameters" %}
+{% tabs %} {% tab title="Request Body" %}
 
 ```typescript
 {
-    plyrId: string; // The player's unique identifier
+    plyrIds: string[]; // Array of player unique identifiers
 }
 ```
 
@@ -25,19 +25,21 @@ description: Get user avatar endpoint
 {
   success: true,
   data: {
-    avatarUrl: string
+    avatars: {
+      [plyrId: string]: string // Map of plyrId to avatarUrl
+    }
   }
 }
 ```
 
 {% endtab %}
 
-{% tab title="Error Response (404)" %}
+{% tab title="Error Response (400)" %}
 
 ```typescript
 {
   success: false,
-  error: "Avatar not found",
+  error: "Invalid request format",
   data: null
 }
 ```

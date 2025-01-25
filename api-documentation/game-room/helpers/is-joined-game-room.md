@@ -1,20 +1,20 @@
 ---
-description: Check if a player has joined a specific game room
+description: Check if a player has joined a game room
 ---
 
-# Is Joined Game Room
+# Check If Joined Game Room
 
-{% hint style="info" %} Check if a player has joined a specific game room. {% endhint %}
+{% hint style="info" %} Checks if a specific player has joined a game room. {% endhint %}
 
-**Endpoint:** `/game/isJoined/{roomId}/{plyrId}`  
+**Endpoint:** `/game/isJoined`  
 **Method:** GET
 
 {% tabs %} {% tab title="Request Parameters" %}
 
 ```typescript
 {
-  roomId: string,    // The ID of the game room
-  plyrId: string     // The Plyr ID of the user
+    roomId: string; // The ID of the room to check
+    plyrId: string; // The player ID to check
 }
 ```
 
@@ -24,23 +24,40 @@ description: Check if a player has joined a specific game room
 
 ```typescript
 {
-  success: true,
-  data: {
-    isJoined: boolean
-  }
+    success: true,
+    data: {
+        isJoined: boolean; // true if player has joined the room, false otherwise
+    }
 }
 ```
 
 {% endtab %}
 
-{% tab title="Error Response (404)" %}
+{% tab title="Error Response (400)" %}
 
 ```typescript
 {
-  success: false,
-  error: "Failed to check game room status",
-  data: null
+    success: false,
+    error: string;
+    data: null;
 }
 ```
 
 {% endtab %} {% endtabs %}
+
+## Example Usage
+
+```javascript
+const timestamp = Date.now().toString();
+const hmac = generateHmacSignature(timestamp, {}, secretKey);
+
+const response = await axios.get(apiEndpoint + '/game/isJoined?roomId=' + roomId + '&plyrId=' + plyrId, {
+    headers: {
+        apikey: apiKey,
+        signature: hmac,
+        timestamp: timestamp
+    }
+});
+
+const isJoined = response.data.data.isJoined;
+```

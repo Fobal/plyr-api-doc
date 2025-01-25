@@ -6,7 +6,7 @@ description: Get user activity logs
 
 {% hint style="info" %} Retrieve activity logs for a specific user. {% endhint %}
 
-**Endpoint:** `/logs/{plyrId}`  
+**Endpoint:** `/activityLogs/{plyrId}`  
 **Method:** GET
 
 {% tabs %} {% tab title="Request Parameters" %}
@@ -51,4 +51,6 @@ description: Get user activity logs
 }
 ```
 
-{% endtab %} {% endtabs %}
+```plaintext
+
+```

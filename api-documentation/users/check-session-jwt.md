@@ -6,14 +6,14 @@ description: Check session JWT validity endpoint
 
 {% hint style="info" %} Verify if a session JWT is valid and get associated user information. {% endhint %}
 
-**Endpoint:** `/auth/check`  
+**Endpoint:** `/user/session/verify`  
 **Method:** POST
 
 {% tabs %} {% tab title="Request Body" %}
 
 ```typescript
 {
-    sessionJwt: string;
+    sessionJwt: string; // JWT token to verify
 }
 ```
 
@@ -39,7 +39,7 @@ description: Check session JWT validity endpoint
 ```typescript
 {
   success: false,
-  error: "Invalid JWT format",
+  error: string,
   data: null
 }
 ```

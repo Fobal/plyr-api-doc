@@ -4,17 +4,17 @@ description: Get user's token balance
 
 # Get User Token Balance
 
-{% hint style="info" %} Retrieve the token balance for a specific user. {% endhint %}
+{% hint style="info" %} Retrieve the token balance for a specific user using either PLYR ID or Primary address. {% endhint %}
 
-**Endpoint:** `/tokens/balance/{plyrId}/{tokenSymbol}`  
+**Endpoint:** `/user/balance/{searchTxt}/{tokenName?}`  
 **Method:** GET
 
 {% tabs %} {% tab title="Request Parameters" %}
 
 ```typescript
 {
-  plyrId: string,      // The player's unique identifier
-  tokenSymbol: string  // The token symbol
+  searchTxt: string,   // The player's PLYR ID or Primary address
+  tokenName?: string   // Optional token name parameter
 }
 ```
 
@@ -27,7 +27,7 @@ description: Get user's token balance
   success: true,
   data: {
     balance: string,  // Token balance as string
-    decimals: number // Token decimals
+    decimals: number  // Token decimals
   }
 }
 ```
@@ -45,3 +45,14 @@ description: Get user's token balance
 ```
 
 {% endtab %} {% endtabs %}
+
+**Examples:**
+
+```typescript
+// Using PLYR ID
+/user/balance/tonnystripes
+// Using Primary address
+/user/balance/0x...
+// With specific token
+/user/balance/tonnystripes/USDT
+```
