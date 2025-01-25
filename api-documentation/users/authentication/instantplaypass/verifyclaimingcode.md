@@ -2,41 +2,39 @@
 description: Verify Claiming Code endpoint documentation
 ---
 
-# Verify Claiming Code
+# VerifyClaimingCode
 
-{% hint style="info" %} Verify the validity of an Instant PlayPass claiming code. {% endhint %}
+{% hint style="info" %}
+Verify the validity of an Instant PlayPass claiming code.
+{% endhint %}
 
-**Endpoint:** `/instantPlayPass/verify/claimingCode/{claimingCode}`  
+**Endpoint:** `/instantPlayPass/verify/claimingCode/{claimingCode}`\
 **Method:** GET
 
-{% tabs %} {% tab title="Request Parameters" %}
-
+{% tabs %}
+{% tab title="Request Parameters" %}
 ```typescript
 claimingCode: string; // The claiming code to verify
 ```
-
 {% endtab %}
 
 {% tab title="Success Response (200)" %}
-
 ```typescript
 {
     valid: boolean; // Whether the claiming code is valid
     status: string; // Status of the claiming code
 }
 ```
-
 {% endtab %}
 
 {% tab title="Error Response" %}
-
 ```typescript
 {
     error: string;
 }
 ```
-
-{% endtab %} {% endtabs %}
+{% endtab %}
+{% endtabs %}
 
 ## Example Usage
 
@@ -68,4 +66,6 @@ if (valid) {
 }
 ```
 
-{% hint style="info" %} Verify the claiming code before attempting to use it in the claiming process. {% endhint %} {% hint style="warning" %} Claiming codes can only be used once. {% endhint %}
+{% hint style="warning" %}
+Claiming codes can only be used once.
+{% endhint %}
